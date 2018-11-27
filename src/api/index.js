@@ -41,7 +41,8 @@ export default {
     return http(request.GeneralPolicy, {
       params: {
         page: page || 1,
-        limit: limit || 10
+        limit: limit || 10,
+        views: 1
       }
     });
   },
@@ -55,7 +56,8 @@ export default {
     return http(request.DeclarationPolicy, {
       params: {
         page: page || 1,
-        limit: limit || 10
+        limit: limit || 10,
+        views: 'views'
       }
     });
   },
@@ -69,7 +71,8 @@ export default {
     return http(request.AnalyzingPolicy, {
       params: {
         page: page || 1,
-        limit: limit || 10
+        limit: limit || 10,
+        views: 1
       }
     });
   },
@@ -83,7 +86,8 @@ export default {
     return http(request.PolicyInfo, {
       params: {
         page: page || 1,
-        limit: limit || 10
+        limit: limit || 10,
+        views: 1
       }
     });
   },
@@ -124,7 +128,7 @@ export default {
    * @param {Number} id 政策ID
    */
   getExplainPolicyDetail(id) {
-    return http(`${request.DeclarePolicyDetail}/${id}`);
+    return http(`${request.ExplainDetailDetail}/${id}`);
   },
 
   /**
@@ -132,7 +136,7 @@ export default {
    * @param {Number} id 政策ID
    */
   getInformationPolicyDetail(id) {
-    return http(`${request.DeclarePolicyDetail}/${id}`);
+    return http(`${request.PolicyInforDetail}/${id}`);
   },
 
   /**
@@ -242,13 +246,19 @@ export default {
       method: 'post',
       data
     });
+  },
 
-    // return http(request.Register, {
-    //   params: {
-    //     phone: phone,
-    //     captcha: captcha
-    //   }
-    // });
+  /**
+   * 游客注册
+   * @param {String} phone 手机号，即帐号名称
+   * @param {String} captcha 验证码
+   */
+  touristRegister(theme) {
+    return http({
+      url: request.TouristRegister,
+      method: 'post',
+      data: { theme }
+    });
   },
 
   /**

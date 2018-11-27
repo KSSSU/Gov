@@ -17,10 +17,15 @@
     </div>
 
     <mt-button type="danger" @click="valid">进入国策数据</mt-button>
+		<div class="line-container" style="margin-top: 20px;">
+      <router-link to="/touristRegister">游客注册</router-link>
+    </div>
+
     <span class="protocol" @click="popupVisible = true" v-if="visible">点击查看"用户协议"</span>
-    <div class="line-container" style="margin-top: 20px;">
+    <div class="line-container" style="margin-top: 20px;" v-if="visible">
       <router-link to="/register">帐号注册</router-link>
     </div>
+		
 
     <!-- 用户协议 -->
     <protocol :popupVisible="popupVisible" @onClose="popupVisible = false;"></protocol>

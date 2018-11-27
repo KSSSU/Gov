@@ -7,25 +7,25 @@
 		</mt-header>
 		
     <header class="header">
-      <h1>{{article.declareTitle || article.generalTitle}}</h1>
+      <h1>{{article.declareTitle || article.generalTitle || article.explainTitle || article.informationTitle}}</h1>
       <p class="line-container">
-        <span>{{article.declareSource || article.generalSource}}</span>
-        <span>{{formatDate(article.declarePublishTime || article.generalPublishTime)}}</span>
+        <span>{{article.declareSource || article.generalSource || article.explainSource || article.informationSource}}</span>
+        <span>{{formatDate(article.declarePublishTime || article.generalPublishTime || article.explainPublishTime || article.informationPublishTime)}}</span>
       </p>
     </header>
 
     <article class="desc">
       <p class="line-container" style="margin-bottom: 5px">
-				<span>发文号: {{article.declareIssue || article.generalIssue}}</span>
-				<span>成文时间: {{formatDate(article.declareWriteTime || article.generalWriteTime)}}</span>
+				<span>发文号: {{article.declareIssue || article.generalIssue || article.explainIssue || article.informationIssue}}</span>
+				<span>成文时间: {{formatDate(article.declareWriteTime || article.generalWriteTime || article.explainWriteTime || article.informationWriteTime)}}</span>
 			</p>
       <p class="line-container">
-				<span>发文单位: {{article.declareSource || article.generalSource}}</span>
-				<span>发文时间: {{formatDate(article.declarePublishTime || article.generalPublishTime)}}</span>
+				<span>发文单位: {{article.declareSource || article.generalSource || article.explainSource || article.informationSource}}</span>
+				<span>发文时间: {{formatDate(article.declarePublishTime || article.generalPublishTime || article.explainPublishTime || article.informationPublishTime)}}</span>
 			</p>
     </article>
 
-    <article class="content" v-html="article.declareText || article.generalText"></article>
+    <article class="content" v-html="article.declareText || article.generalText || article.explainText || article.informationText"></article>
   </section>
 </template>
 
@@ -51,20 +51,40 @@ export default {
 		 */
 		async fetchData() {
 			let res = '';
-			const flag = this.$route.params.declareFlag;
+			const { id, selected } = this.$route.params;
 
-			// flag：一个申报政策的标记，用来区分通用政策和申报政策的API请求
-			if (flag) {
-				res = await API.getDeclarePolicyDetail(this.$route.params.id);
-			} else {
-				res = await API.getPolicyDetail(this.$route.params.id);
+			console.log('select', selected);
+
+			switch (selected) {
+				case 1:
+					res = await API.getPolicyDetail(id);
+					break;
+				case 2:
+					res = await API.getPolicyDetail(id);
+					break;
+				case 3:
+					res = await API.getDeclarePolicyDetail(id);
+					break;
+				case 4:
+					res = await API.getExplainPolicyDetail(id);
+					break;
+				case 5:
+					res = await API.getInformationPolicyDetail(id);
+					break;
+				default:
+					res = await API.getDeclarePolicyDetail(id);
 			}
 
-			if (res.data.code == 0 && res.data.data) {
-				this.article = res.data.data;
+			if (selected == 4) {
+				this.article = res.data;
 			} else {
-				this.article = {};
+				if (res.data.code == 0 && res.data.data) {
+					this.article = res.data.data;
+				} else {
+					this.article = {};
+				}
 			}
+
 			console.log('res', res.data);
 		},
 
@@ -88,7 +108,7 @@ export default {
 
 <style lang="scss">
 .article {
-	padding: 0 1.3rem;
+	padding: 0 1.3rem 10px;
 	background: #fff;
 
 	.header {

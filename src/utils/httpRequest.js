@@ -16,8 +16,8 @@ const http = axios.create({
 http.interceptors.request.use(
   config => {
     if (Vue.cookie.get('x-access-token')) {
-      config.headers['Authorization'] =
-        'Bearer ' + Vue.cookie.get('x-access-token'); // 请求头带上token
+      // config.headers['Authorization'] =
+      //   'Bearer ' + Vue.cookie.get('x-access-token'); // 请求头带上token
     }
     return config;
   },

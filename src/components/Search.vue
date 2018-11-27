@@ -14,7 +14,7 @@
 		</div>
 
 		<section class="wrap" v-if="list && list.length > 0">
-			<list :page="page" :pages="pages" :dataList=list :loading="loading" @onCreated="init" @onLoadMore="loadMore"></list>
+			<list :selected="selected" :page="page" :pages="pages" :dataList=list :loading="loading" @onCreated="init" @onLoadMore="loadMore"></list>
 		</section>
 	</section>
 </template>
@@ -32,6 +32,7 @@ export default {
 			page: 1,
 			pages: 1,
 			list: [],
+			selected: 2, // 通用政策
 			visible: true,
 			placeholder: '搜索政策名称',
 			cancelText: '取消'

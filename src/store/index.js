@@ -9,6 +9,7 @@ const store = new Vuex.Store({
     selectedTopicTitle: '', // 选中的政策主题的标题
     selectedTab: 'home', // 默认Tabs标签
     selectedNav: 1, // 默认Navbar标签
+    selectedTopic: '', // 默认Navbar标签
     hasFooterTab: true, //是否有Tabs标签
     isEditTopic: false, // 是否在编辑主题，用于首次登陆时选择主题
     searchText: '', // 搜索文字
@@ -26,6 +27,9 @@ const store = new Vuex.Store({
     },
     [types.SELECT_NAVBAR](state, params) {
       state.selectedNav = params;
+    },
+    [types.SELECT_TOPIC](state, params) {
+      state.selectedTopic = params;
     },
     [types.SHOW_FOOTER](state, params) {
       state.hasFooterTab = params;

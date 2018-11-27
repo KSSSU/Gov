@@ -25,6 +25,9 @@
 <script>
 export default {
 	props: {
+		selected: {
+			type: Number
+		},
 		tipText: {
 			type: String,
 			default: '没有数据了'
@@ -65,7 +68,10 @@ export default {
 		 * @param {String} declareFlag 一个申报政策的标记，用来区分通用政策和申报政策的API请求
 		 */
 		toDetail(id, declareFlag) {
-			this.$router.push({ name: 'Detail', params: { id, declareFlag } });
+			this.$router.push({
+				name: 'Detail',
+				params: { id, declareFlag, selected: this.selected }
+			});
 		},
 
 		/**
@@ -106,12 +112,13 @@ export default {
 
 	.tag {
 		display: flex;
-		margin: 8px 0 0;
+		flex-wrap: wrap;
+		margin: 3px 0 0;
 
 		li {
 			padding: 3px 6px;
 			background: #f0f0f0;
-			margin: 0 5px 0 0;
+			margin: 5px 5px 0 0;
 			font-size: 0.9rem;
 			border-radius: 4px;
 			color: #777;

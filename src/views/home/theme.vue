@@ -27,7 +27,7 @@ export default {
 					{ value: 'q', label: '营商环境', icon: 'static/icon/topic-2.png' },
 					{
 						value: '2',
-						label: '人才引进和能力提升',
+						label: '人才引进',
 						icon: 'static/icon/topic-3.png'
 					},
 					{ value: '3', label: '投资融资', icon: 'static/icon/topic-4.png' }

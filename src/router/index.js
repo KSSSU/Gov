@@ -27,6 +27,8 @@ const Search = () => import(/* webpackChunkName: "gv" */ '@/components/Search');
 const Login = () => import(/* webpackChunkName: "gv" */ '@/views/common/login');
 const Register = () =>
   import(/* webpackChunkName: "gv" */ '@/views/common/register');
+const TouristRegister = () =>
+  import(/* webpackChunkName: "gv" */ '@/views/common/touristRegister');
 
 const router = new Router({
   routes: [
@@ -134,6 +136,15 @@ const router = new Router({
       path: '/register',
       name: 'Register',
       component: Register,
+      meta: {
+        hasFooter: true,
+        noScroll: false
+      }
+    },
+    {
+      path: '/touristRegister',
+      name: 'TouristRegister',
+      component: TouristRegister,
       meta: {
         hasFooter: true,
         noScroll: false

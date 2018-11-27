@@ -8,10 +8,10 @@
 
     <mt-tab-container>
       <mt-tab-container-item>
-				<list :page="page" :pages="pages" :tipText="tipText" :dataList=list :loading="loading" @onCreated="init" @onLoadMore="loadMore"></list>
+				<list :selected="selected" :page="page" :pages="pages" :tipText="tipText" :dataList=list :loading="loading" @onCreated="init" @onLoadMore="loadMore"></list>
       </mt-tab-container-item>
     </mt-tab-container>
-  </section>
+	</section>
 </template>
 
 <script>
@@ -22,6 +22,7 @@ export default {
 	data() {
 		return {
 			selected: this.$store.state.selectedNav,
+			selectedTopic: JSON.parse(localStorage.getItem('select_topic')) || '',
 			page: 1,
 			pages: 1,
 			list: [],
@@ -99,21 +100,28 @@ export default {
 				this.list = [];
 			}
 
-			if (!getToken() && this.selected == 1 && this.topicID) {
-				// page设为10000是为了隐藏加载动画
-				this.page = 10000;
-				this.tipText = '你还没有订阅主题';
-				return false;
-			}
+			// if (!getToken() && this.selected == 1 && this.topicID) {
+			// 	// page设为10000是为了隐藏加载动画
+			// 	this.page = 10000;
+			// 	this.tipText = '你还没有订阅主题';
+			// 	return false;
+			// }
+
+			console.log(1);
 
 			try {
 				let res = '';
+				console.log('this.selected', this.selected);
 				if (this.selected == 1) {
 					// 如果是订阅列表
-					if (this.topicID) {
-						res = await this.api(this.topicID, this.page);
+					console.log('this.selectedTopic', this.selectedTopic);
+					if (this.selectedTopic) {
+						console.log('this.selectedTopic', this.selectedTopic);
+						res = await this.api(this.selectedTopic, this.page);
 					} else {
-						this.list = [];
+						// 获取数字政府政策列表
+						// res = await API.getTopicList('l', 1, 3);
+						// this.loading = true;
 					}
 				} else {
 					// 其它政策列表
@@ -156,5 +164,9 @@ export default {
 
 .mint-tab-container-item {
 	background: #fff;
+}
+
+.link {
+	text-align: center;
 }
 </style>

@@ -11,11 +11,14 @@ const gov = {
   todayPolicy: '/gov/policy/declare/page', // 今日政策
   policyDetail: '/gov/policy/general', // 通用政策详情
   declarePolicyDetail: '/gov/policy/declare', // 申报政策详情
+  explainDetail: '/gov/policy/explain', // 政策解读详情
+  policyInforDetail: '/gov/policy/information/get/', // 政策资讯详情
   search: '/gov/policy/general/selectAll', // 搜索
 
   login: '/auth/oauth/token', // 用户登录
   logout: '/auth/oauth/removeToken', // 用户注销
 
+  touristRegister: '/admin/user/one_login', // 游客注册
   register: '/admin/user/register', // 用户注册
   user: '/admin/user/info', // 用户信息
   policyTopic: '/admin/dict/dictPage', // 所有主题
@@ -33,11 +36,14 @@ export const TodayPolicy = API_ROOT.concat(gov.todayPolicy);
 export const TopicList = API_ROOT.concat(gov.topicList);
 export const PolicyDetail = API_ROOT.concat(gov.policyDetail);
 export const DeclarePolicyDetail = API_ROOT.concat(gov.declarePolicyDetail);
+export const ExplainDetailDetail = API_ROOT.concat(gov.explainDetail);
+export const PolicyInforDetail = API_ROOT.concat(gov.policyInforDetail);
 export const Search = API_ROOT.concat(gov.search);
 
 export const Login = API_ROOT.concat(gov.login);
 export const Logout = API_ROOT.concat(gov.logout);
 
+export const TouristRegister = API_ROOT.concat(gov.touristRegister);
 export const Register = API_ROOT.concat(gov.register);
 export const User = API_ROOT.concat(gov.user);
 export const PolicyTopic = API_ROOT.concat(gov.policyTopic);

@@ -35,7 +35,7 @@
 <script>
 import API from '@/api';
 import { Toast } from 'mint-ui';
-import { removeToken } from '@/utils';
+import { getToken, removeToken } from '@/utils';
 import List from '@/components/List';
 import { setTimeout } from 'timers';
 export default {
@@ -86,6 +86,14 @@ export default {
 		 * 获取用户信息
 		 */
 		async getUserInfo() {
+			const user = getToken();
+			this.name = `${user} (游客)`;
+		},
+
+		/**
+		 * 获取用户信息
+		 */
+		async getUserInfo2() {
 			try {
 				const res = await API.getUserInfo('');
 
