@@ -3,7 +3,7 @@
     <section class="content">
       <header>
         <h2>请选择一个主题</h2>
-        <mt-button type="danger" @click="handleLogin" :disabled="!selected">确认注册</mt-button>
+        <mt-button type="danger" @click="handleLogin" :disabled="!selected">确认登录</mt-button>
       </header>
       <ul class="list" v-if="topicList.length > 0">
         <li
@@ -15,7 +15,6 @@
           <span>{{item.label}}</span>
         </li>
       </ul>
-      <p v-else style="color: #999">你已经订阅了所有主题。</p>
     </section>
   </section>
 </template>
@@ -48,6 +47,7 @@ export default {
 
       setToken(res.data.username);
       localStorage.setItem("select_topic", JSON.stringify(this.selected));
+      localStorage.setItem("user", res.data.username);
       this.$store.commit("SELECT_TAB", "Subscription");
       this.$store.commit("SELECT_NAVBAR", 1);
       this.$store.commit("SELECT_TOPIC", this.selected);

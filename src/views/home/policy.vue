@@ -1,7 +1,8 @@
 <template>
   <section class="wrap">
-    <header class="title">热门政策</header>
+    <header class="title">最新政策</header>
     <list
+      :selected="selected"
       :page="page"
       :pages="pages"
       :dataList="list"
@@ -18,6 +19,7 @@ import List from "@/components/List";
 export default {
   data() {
     return {
+      selected: 2, // 通用政策
       loading: false,
       page: 1, //当前页数
       pages: 1, //总页数

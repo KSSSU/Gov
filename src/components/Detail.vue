@@ -20,7 +20,17 @@
         <span>成文时间: {{formatDate(article.declareWriteTime || article.generalWriteTime || article.explainWriteTime || article.informationWriteTime)}}</span>
       </p>
       <p class="line-container">
-        <span>发文单位: {{article.declareSource || article.generalSource || article.explainSource || article.informationSource}}</span>
+        <span style="display:flex">
+          <span>发文单位:&nbsp;</span>
+          <span class="dispatch">
+            <span v-if="article.explainSource">{{article.explainSource}}</span>
+            <span
+              v-else
+              v-for="dispatch in (article.dispatchs || article.declareDispatchList || article.explainOrganizationList)"
+              :key="dispatch.commonId"
+            >{{dispatch.commonName}}</span>
+          </span>
+        </span>
         <span>发文时间: {{formatDate(article.declarePublishTime || article.generalPublishTime || article.explainPublishTime || article.informationPublishTime)}}</span>
       </p>
     </article>
@@ -124,6 +134,11 @@ export default {
     }
   }
 
+  .dispatch {
+    display: flex;
+    flex-direction: column;
+  }
+
   img {
     width: 100%;
   }
@@ -145,6 +160,13 @@ export default {
   .content {
     line-height: 1.8;
     font-size: 1.1rem;
+
+    h1,
+    h2,
+    h3 {
+      font-size: 1rem;
+      margin: 0 0 10px;
+    }
 
     p {
       margin-bottom: 15px;

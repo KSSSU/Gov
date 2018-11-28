@@ -29,6 +29,7 @@ const Register = () =>
   import(/* webpackChunkName: "gv" */ '@/views/common/register');
 const TouristRegister = () =>
   import(/* webpackChunkName: "gv" */ '@/views/common/touristRegister');
+const Tag = () => import(/* webpackChunkName: "gv" */ '@/components/Tag');
 
 const router = new Router({
   routes: [
@@ -82,6 +83,15 @@ const router = new Router({
       path: '/topic',
       name: 'Topic',
       component: Topic,
+      meta: {
+        hasFooter: false,
+        noScroll: false
+      }
+    },
+    {
+      path: '/tag/:id',
+      name: 'Tag',
+      component: Tag,
       meta: {
         hasFooter: false,
         noScroll: false

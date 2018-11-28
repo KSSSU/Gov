@@ -206,6 +206,58 @@ export default {
   },
 
   /**
+   * 通知政策标签列表
+   */
+  getGeneralTag(id, page, limit) {
+    return http(`${request.GeneralTag}/${id}`, {
+      params: {
+        page: page || 1,
+        limit: limit || 10,
+        isAsc: true
+      }
+    });
+  },
+
+  /**
+   * 申报政策标签列表
+   */
+  getDeclarationTag(id, page, limit) {
+    return http(`${request.DeclarationTag}/${id}`, {
+      params: {
+        page: page || 1,
+        limit: limit || 10,
+        isAsc: true
+      }
+    });
+  },
+
+  /**
+   * 政策解读标签列表
+   */
+  getAnalyzingTag(id, page, limit) {
+    return http(`${request.AnalyzingTag}/${id}`, {
+      params: {
+        page: page || 1,
+        limit: limit || 10,
+        isAsc: true
+      }
+    });
+  },
+
+  /**
+   * 政策资讯标签列表
+   */
+  getPolicyInfoTag(id, page, limit) {
+    return http(`${request.PolicyInfoTag}/${id}`, {
+      params: {
+        page: page || 1,
+        limit: limit || 10,
+        isAsc: true
+      }
+    });
+  },
+
+  /**
    * 用户登陆
    * @param {String} phone 手机号，即帐号名称
    * @param {String} captcha 验证码

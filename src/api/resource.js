@@ -1,14 +1,14 @@
 import { API_ROOT } from './config.js';
 
 const gov = {
-  hotPolicy: '/gov/policy/declare/page', // 热门政策
+  hotPolicy: '/gov/policy/general/selectAll', // 热门政策
   subscribedPolicy: '/gov/policy/declare/page', // 订阅政策
   generalPolicy: '/gov/policy/general/selectAll', // 通用政策
   declarationPolicy: '/gov/policy/declare/page', // 申报政策
   analyzingPolicy: '/gov/policy/explain/page', // 政策解读
   policyInfo: '/gov/policy/information/get/page', // 政策资讯
   topicList: '/gov/policy/general/selectAll', // 指定主题的政策列表
-  todayPolicy: '/gov/policy/declare/page', // 今日政策
+  todayPolicy: '/gov/policy/general/selectAll', // 今日政策
   policyDetail: '/gov/policy/general', // 通用政策详情
   declarePolicyDetail: '/gov/policy/declare', // 申报政策详情
   explainDetail: '/gov/policy/explain', // 政策解读详情
@@ -23,7 +23,12 @@ const gov = {
   user: '/admin/user/info', // 用户信息
   policyTopic: '/admin/dict/dictPage', // 所有主题
   subscribedTopic: '/dict/dictPage/subscribed', // 已订阅主题
-  saveTopic: '/dict/dictPage/subscribed' // 保存已订阅主题
+  saveTopic: '/dict/dictPage/subscribed', // 保存已订阅主题
+
+  generalTag: '/gov/policy/general/tag',
+  declarationTag: '/gov/policy/declare/tag',
+  analyzingTag: '/gov/policy/explain/tag',
+  policyInfoTag: '/gov/policy/information/tag'
 };
 
 export const HotPolicy = API_ROOT.concat(gov.hotPolicy);
@@ -50,3 +55,9 @@ export const PolicyTopic = API_ROOT.concat(gov.policyTopic);
 
 export const SubscribedTopic = API_ROOT.concat(gov.subscribedTopic);
 export const SaveTopic = API_ROOT.concat(gov.saveTopic);
+
+// 标签
+export const GeneralTag = API_ROOT.concat(gov.generalTag);
+export const DeclarationTag = API_ROOT.concat(gov.declarationTag);
+export const AnalyzingTag = API_ROOT.concat(gov.analyzingTag);
+export const PolicyInfoTag = API_ROOT.concat(gov.policyInfoTag);
