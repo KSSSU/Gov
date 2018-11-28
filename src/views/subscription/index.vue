@@ -121,6 +121,7 @@ export default {
       try {
         let res = "";
         console.log("this.selected", this.selected);
+
         if (this.selected == 1) {
           // 如果是订阅列表
           console.log("this.selectedTopic", this.selectedTopic);
@@ -136,6 +137,7 @@ export default {
           // 其它政策列表
           res = await this.api(this.page);
         }
+
         this.list = this.list.concat(res.data.records);
         this.pages = res.data.pages;
         this.tipText = "没有数据了";

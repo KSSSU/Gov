@@ -17,7 +17,7 @@
     </div>
 
     <ul class="line-container">
-      <li v-for="(item,index) in perList" :key="index">
+      <li v-for="(item,index) in perList" :key="index" @click="handleClick(index)">
         <router-link :to="item.to">
           <img :src="item.icon" :alt="item.label">
           <span>{{item.label}}</span>
@@ -162,6 +162,15 @@ export default {
       this.page++;
       if (this.page <= this.pages) {
         this.fetchData();
+      }
+    },
+
+    /**
+     * 跳转到订阅时把Navbar标签设为订阅栏
+     */
+    handleClick(index) {
+      if (index == 0) {
+        this.$store.commit("SELECT_NAVBAR", 1);
       }
     }
   }

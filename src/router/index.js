@@ -38,16 +38,8 @@ const router = new Router({
       name: 'Home',
       component: Home,
       meta: {
+        isTabBar: true,
         hasFooter: true,
-        noScroll: false
-      }
-    },
-    {
-      path: '/topicList/:value',
-      name: 'TopicList',
-      component: TopicList,
-      meta: {
-        hasFooter: false,
         noScroll: false
       }
     },
@@ -56,6 +48,7 @@ const router = new Router({
       name: 'Subscription',
       component: Subscription,
       meta: {
+        isTabBar: true,
         hasFooter: true,
         noScroll: false
       }
@@ -65,12 +58,14 @@ const router = new Router({
       name: 'Mine',
       component: Mine,
       meta: {
+        isTabBar: true,
         hasFooter: true,
         noScroll: false
       },
       beforeEnter: (to, from, next) => {
         let token = Vue.cookie.get('x-access-token');
-        if (!token || !/\S/.test(token)) {
+        let user = localStorage.getItem('user');
+        if (!token || !user || !/\S/.test(token)) {
           clearLoginInfo();
           next({
             name: 'Login'
@@ -83,6 +78,15 @@ const router = new Router({
       path: '/topic',
       name: 'Topic',
       component: Topic,
+      meta: {
+        hasFooter: false,
+        noScroll: false
+      }
+    },
+    {
+      path: '/topicList/:value',
+      name: 'TopicList',
+      component: TopicList,
       meta: {
         hasFooter: false,
         noScroll: false
@@ -164,8 +168,11 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  // directRightUrl()
-  console.log(to);
+  console.log('toRouter: ', to);
+  //选择底部Tab标签
+  if (to.name) {
+    store.commit('SELECT_TAB', to.name.toLowerCase());
+  }
   //是否显示底部导航
   store.commit('SHOW_FOOTER', to.meta.hasFooter);
   //判断是否为baseHome页面

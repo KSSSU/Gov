@@ -8,22 +8,22 @@
 </template>
 
 <script>
-import FooterTabs from '@/components/FooterTabs';
+import FooterTabs from "@/components/FooterTabs";
 
 export default {
-	name: 'app',
-	data() {
-		return {};
-	},
-	components: {
-		FooterTabs
-	},
-	watch: {
-		$route(to, from) {
-			this.$store.commit('SELECT_TAB', to.name);
-			console.log('to', to);
-			console.log('from', from);
-		}
-	}
+  name: "app",
+  data() {
+    return {};
+  },
+  components: {
+    FooterTabs
+  },
+  watch: {
+    $route(to, from) {
+      // this.$store.commit("SELECT_TAB", to.name.toLowerCase());
+      // console.log("to", to);
+      // console.log("from", from);
+    }
+  }
 };
 </script>
