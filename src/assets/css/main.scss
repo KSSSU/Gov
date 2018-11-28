@@ -98,9 +98,13 @@ p {
   .mint-button {
     border-radius: 22px;
     width: 80%;
-    height: 36px;
+    height: 40px;
     font-size: 1rem;
     box-shadow: 0 0 10px rgba(246, 0, 0, 0.8);
+  }
+
+  .touristBtn {
+    box-shadow: 0 0 10px rgba(136, 211, 255, 0.8);
   }
 
   .protocol {

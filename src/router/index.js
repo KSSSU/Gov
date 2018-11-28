@@ -146,7 +146,7 @@ const router = new Router({
       name: 'TouristRegister',
       component: TouristRegister,
       meta: {
-        hasFooter: true,
+        hasFooter: false,
         noScroll: false
       }
     }
