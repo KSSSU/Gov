@@ -13,7 +13,7 @@
 				<div class="signature" v-if="visible">{{signature}}</div>
 			</div>
 			<mt-button type="danger" size="small" v-if="visibleEditButton">编辑</mt-button>
-			<mt-button type="danger" size="small" @click="handleLogout">退出</mt-button>
+			<!-- <mt-button type="danger" size="small" @click="handleLogout">退出</mt-button> -->
 		</div>
 
 		<ul class="line-container">
@@ -53,8 +53,8 @@ export default {
 			visibleEditButton: false,
 			perList: [
 				{
-					label: '我要订阅',
-					to: '/topic',
+					label: '订阅',
+					to: '/subscription',
 					icon: 'static/icon/subscription.png'
 				},
 				{
