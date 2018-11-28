@@ -4,7 +4,7 @@
     <select v-model="selected">
       <option v-for="item in topicList" :key="item.id" :value="item.value">{{item.label}}</option>
     </select>
-    <p><mt-button type="danger" @click="handleClick">确认登录</mt-button></p>  
+    <p><mt-button type="danger" @click="handleClick">确认登录</mt-button></p>
   </section>
 </template>
 
@@ -27,7 +27,8 @@ export default {
 		 */
 		async getAllTopic() {
 			const res = await API.getPolicyTopic();
-			this.topicList = res.data.records;
+      this.topicList = res.data.records;
+      this.selected = this.topicList[0].value;
 			console.log('topic', res.data);
 		},
 

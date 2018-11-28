@@ -5,7 +5,7 @@
 				<mt-button icon="back"></mt-button>
 			</span>
 		</mt-header>
-		
+
     <header class="header">
       <h1>{{article.declareTitle || article.generalTitle || article.explainTitle || article.informationTitle}}</h1>
       <p class="line-container">
@@ -72,7 +72,7 @@ export default {
 					res = await API.getInformationPolicyDetail(id);
 					break;
 				default:
-					res = await API.getDeclarePolicyDetail(id);
+					res = await API.getPolicyDetail(id);
 			}
 
 			if (selected == 4) {
