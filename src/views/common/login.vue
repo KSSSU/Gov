@@ -1,7 +1,7 @@
 <template>
   <section class="field-box">
 		<img src="static/images/tourist.png" alt="游客" width="50px;">
-    <header><h1>游客</h1></header>
+    <header><h1>登录</h1></header>
 
     <div class="field">
       <mt-field label="" placeholder="请输入手机号" type="tel" v-model="phone" v-if="visible">

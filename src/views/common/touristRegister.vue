@@ -37,10 +37,10 @@ export default {
 
 			setToken(res.data.username);
 			localStorage.setItem('select_topic', JSON.stringify(this.selected));
-			this.$store.commit('SELECT_TAB', 'Subscription');
+			this.$store.commit('SELECT_TAB', 'Mine');
 			this.$store.commit('SELECT_NAVBAR', 1);
 			this.$store.commit('SELECT_TOPIC', this.selected);
-			this.$router.push('Subscription');
+			this.$router.push('mine');
 
 			console.log('res', res);
 		}
