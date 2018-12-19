@@ -1,11 +1,7 @@
 <template>
   <section>
     <mt-navbar v-model="selected" fixed>
-      <mt-tab-item v-for="item in navBar" :key="item.id" :id="item.id">
-        {{
-        item.label
-        }}
-      </mt-tab-item>
+      <mt-tab-item v-for="item in navBar" :key="item.id" :id="item.id">{{ item.label }}</mt-tab-item>
     </mt-navbar>
 
     <mt-tab-container>

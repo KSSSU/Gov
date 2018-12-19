@@ -19,8 +19,8 @@
     </div>
 
     <mt-button type="danger" @click="valid">进入国策数据</mt-button>
-    <span class="or">或者</span>
-    <mt-button type="primary" class="touristBtn" @click="toLink">一键游客登录</mt-button>
+    <span class="or" v-if="visible">或者</span>
+    <mt-button type="primary" class="touristBtn" @click="toLink" v-if="visible">一键游客登录</mt-button>
 
     <span class="protocol" @click="popupVisible = true" v-if="visible">点击查看"用户协议"</span>
     <div class="line-container" style="margin-top: 20px;" v-if="visible">
