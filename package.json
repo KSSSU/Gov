@@ -1,7 +1,7 @@
 {
-  "name": "govmade_data",
+  "name": "govmade_h5",
   "version": "1.0.0",
-  "description": "国策数据",
+  "description": "国策数据HTML5移动端",
   "author": "Jimmy",
   "private": true,
   "scripts": {
